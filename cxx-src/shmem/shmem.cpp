@@ -5,7 +5,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#include <shmem.h>
+#include "shmem.h"
 
 int shm::init(void) {
 
@@ -18,15 +18,15 @@ int shm::init(void) {
     /* connect to (and possibly create) the segment: */
     if ((shmid = shmget(key, SHM_SIZE, 0644 | IPC_CREAT)) == -1) {
         perror("shmget");
-        exit(1);
+        return(1);
     }
 
     /* attach to the segment to get a pointer to it: */
-    data = shmat(shmid, (void *)0, 0);
+    data = (char*) shmat(shmid, (void *)0, 0);
     if (data == (char *)(-1)) {
         perror("shmat");
-        exit(1);
+        return(1);
     }
 
-
+    return 0;
 }

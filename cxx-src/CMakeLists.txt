@@ -16,3 +16,4 @@ add_executable (${app_name}
 main.cpp)
 
 message("App name: " ${app_name})
+add_subdirectory(shmem)

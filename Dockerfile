@@ -9,7 +9,9 @@ RUN python -m pip install --upgrade pip && \
     pip install -r requirements.txt
 
 RUN apt update && apt install -y gcc \
-g++
+g++ \
+make \
+cmake
 
 RUN printf "\nalias ls='ls --color=auto'\n" >> ~/.bashrc
 RUN printf "\nalias ll='ls -alF'\n" >> ~/.bashrc
