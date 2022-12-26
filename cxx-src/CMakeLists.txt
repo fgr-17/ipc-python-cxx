@@ -11,7 +11,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -W -Wall -Wextra")
 
 add_subdirectory(shmem)
-# include_directories(shmem)
 
 set(app_name ipc_python_cxx)
 message("App name: " ${app_name})
