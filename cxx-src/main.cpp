@@ -7,12 +7,11 @@
 
 #include <shmem.h>
 
-#define SHM_SIZE 1024  /* make it a 1K shared memory segment */
-
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 
     shmem sh1{"/tmp/shm1"};
+
+    sh1.init();
     
     /* read or modify the segment, based on the command line: */
     if (argc == 2) {

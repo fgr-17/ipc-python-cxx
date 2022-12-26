@@ -13,7 +13,7 @@ class shmem {
 public:
 
     shmem(std::string path): _path(path) {}
-    ~shmem() {}
+    ~shmem();
 
     int init(void);
     char* get_pointer(void);

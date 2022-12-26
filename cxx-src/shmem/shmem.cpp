@@ -7,7 +7,7 @@
 
 #include <shmem.h>
 
-void shmem::~shmem() {
+shmem::~shmem() {
     /* detach from the segment: */
     if (shmdt(data) == -1) {
         perror("shmdt");
@@ -42,6 +42,6 @@ char* shmem::get_pointer(void) {
     return data;
 }
 
-uint16_t get_max_size(void) {
+uint16_t shmem::get_max_size(void) {
     return shm_size;
 }
