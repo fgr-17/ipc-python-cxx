@@ -7,6 +7,13 @@
 
 #include <shmem.h>
 
+void shmem::~shmem() {
+    /* detach from the segment: */
+    if (shmdt(data) == -1) {
+        perror("shmdt");
+    }
+}
+
 int shmem::init(void) {
 
     /* make the key: */
@@ -33,4 +40,8 @@ int shmem::init(void) {
 
 char* shmem::get_pointer(void) {
     return data;
+}
+
+uint16_t get_max_size(void) {
+    return shm_size;
 }

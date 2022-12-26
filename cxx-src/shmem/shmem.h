@@ -17,6 +17,7 @@ public:
 
     int init(void);
     char* get_pointer(void);
+    uint16_t get_max_size(void);
 
 private:
 

@@ -17,3 +17,4 @@ main.cpp)
 
 message("App name: " ${app_name})
 add_subdirectory(shmem)
+include_directories(shmem)
