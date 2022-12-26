@@ -1,0 +1,3 @@
+[submodule "cxx-src/shmem"]
+	path = cxx-src/shmem
+	url = git@github.com:fgr-17/shmem.git
