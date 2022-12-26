@@ -1,12 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+/**
+ * @file shmem.cpp
+ * @author Federico Roux (rouxfederico@gmail.com)
+ * @brief C++ wrapper for shared memory usage on linux
+ * @version 0.1
+ * @date 2022-12-24
+ */
+
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
 #include <shmem.h>
 
+/**
+ * @brief Destroy the shmem::shmem object
+ * 
+ */
 shmem::~shmem() {
     /* detach from the segment: */
     if (shmdt(data) == -1) {
@@ -14,6 +23,11 @@ shmem::~shmem() {
     }
 }
 
+/**
+ * @brief initialize shared memory object
+ * 
+ * @return int 
+ */
 int shmem::init(void) {
 
     /* make the key: */
@@ -38,10 +52,21 @@ int shmem::init(void) {
     return 0;
 }
 
+
+/**
+ * @brief returns shared memory's data pointer
+ * 
+ * @return char* 
+ */
 char* shmem::get_pointer(void) {
     return data;
 }
 
+/**
+ * @brief return size of the shared mem segment
+ * 
+ * @return uint16_t 
+ */
 uint16_t shmem::get_max_size(void) {
     return shm_size;
 }
