@@ -10,9 +10,6 @@
 int main(int argc, char *argv[])
 {
    
-
-
-
     // /* read or modify the segment, based on the command line: */
     // if (argc == 2) {
     //     printf("writing to segment: \"%s\"\n", argv[1]);

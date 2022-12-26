@@ -5,9 +5,9 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#include "shmem.h"
+#include <shmem.h>
 
-int shm::init(void) {
+int shmem::init(void) {
 
     /* make the key: */
     if ((key = ftok(_path.c_str(), 'R')) == -1) {
@@ -29,4 +29,8 @@ int shm::init(void) {
     }
 
     return 0;
+}
+
+char* shmem::get_pointer(void) {
+    return data;
 }

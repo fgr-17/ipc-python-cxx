@@ -8,14 +8,15 @@
 #define __SHMEM_H
 
 
-class shm {
+class shmem {
 
 public:
 
-    shm(std::string path): _path(path) {}
-    ~shm() {}
+    shmem(std::string path): _path(path) {}
+    ~shmem() {}
 
     int init(void);
+    char* get_pointer(void);
 
 private:
 
@@ -26,7 +27,6 @@ private:
     int mode;
 
     static constexpr uint16_t shm_size = 1000;
-
 };
 
 #endif // __SHMEM_H
