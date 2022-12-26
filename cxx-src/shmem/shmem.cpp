@@ -10,13 +10,13 @@
 int shm::init(void) {
 
     /* make the key: */
-    if ((key = ftok(_path, 'R')) == -1) {
+    if ((key = ftok(_path.c_str(), 'R')) == -1) {
         perror("ftok");
         return(1);
     }
 
     /* connect to (and possibly create) the segment: */
-    if ((shmid = shmget(key, SHM_SIZE, 0644 | IPC_CREAT)) == -1) {
+    if ((shmid = shmget(key, shm_size, 0644 | IPC_CREAT)) == -1) {
         perror("shmget");
         return(1);
     }

@@ -2,6 +2,11 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include <stdint.h>
+
+#ifndef __SHMEM_H
+#define __SHMEM_H
+
 
 class shm {
 
@@ -20,4 +25,8 @@ private:
     char *data;
     int mode;
 
+    static constexpr uint16_t shm_size = 1000;
+
 };
+
+#endif // __SHMEM_H
