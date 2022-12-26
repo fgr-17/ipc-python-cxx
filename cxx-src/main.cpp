@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     
     /* read or modify the segment, based on the command line: */
     if (argc == 2) {
-        std::cout << "writing to segment: \"" << argv[1] << std::endl;
+        std::cout << "writing to segment: \"" << argv[1] << "\"" << std::endl;
         strncpy(sh1.get_pointer(), argv[1], sh1.get_max_size());
     } 
     else {
