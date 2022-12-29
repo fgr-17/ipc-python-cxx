@@ -22,17 +22,17 @@
 
 int main(int argc, char *argv[]) {
 
-    shmem sh1{argv[0]};
+    shmem<std::string> sh1(argv[0]);
 
     assert(!sh1.init());
     
     /* read or modify the segment, based on the command line: */
     if (argc == 2) {
         std::cout << "writing to segment: \"" << argv[1] << "\"" << std::endl;
-        strncpy(sh1.get_pointer(), argv[1], sh1.get_max_size());
+        sh1.write(argv[1]);
     } 
     else {
-        printf("segment contains: \"%s\"\n", sh1.get_pointer());
+        std::cout << "segment contains: "<< sh1.read() << std::endl;
     }
 
     return 0;
