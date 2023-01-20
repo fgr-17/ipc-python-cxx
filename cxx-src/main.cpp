@@ -20,19 +20,28 @@
  * @return int 
  */
 
+typedef struct {
+    int pepe;
+} d_t;
+
 int main(int argc, char *argv[]) {
 
-    shmem<std::string> sh1(argv[0]);
+    shmem<d_t> sh1(argv[0]);
 
     assert(!sh1.init());
+
+
+    d_t var;
+
+    var.pepe = 44;
     
     /* read or modify the segment, based on the command line: */
     if (argc == 2) {
-        std::cout << "writing to segment: \"" << argv[1] << "\"" << std::endl;
-        sh1.write(argv[1]);
+        std::cout << "writing to segment: "  << var.pepe << std::endl;
+        sh1.write(var);
     } 
     else {
-        std::cout << "segment contains: "<< sh1.read() << std::endl;
+        std::cout << "segment contains: "<< sh1.read().pepe << std::endl;
     }
 
     return 0;
