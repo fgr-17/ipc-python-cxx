@@ -21,7 +21,8 @@
  */
 
 typedef struct {
-    int pepe;
+    int num;
+    char c;
 } d_t;
 
 int main(int argc, char *argv[]) {
@@ -33,15 +34,17 @@ int main(int argc, char *argv[]) {
 
     d_t var;
 
-    var.pepe = 44;
+    var.num = 44;
+    var.c = 'x';
     
     /* read or modify the segment, based on the command line: */
     if (argc == 2) {
-        std::cout << "writing to segment: "  << var.pepe << std::endl;
+        std::cout << "writing to segment: "  << var.num << " - " << var.c << std::endl;
         sh1.write(var);
     } 
     else {
-        std::cout << "segment contains: "<< sh1.read().pepe << std::endl;
+        auto res = sh1.read();
+        std::cout << "segment contains: "<< res.num << " - " << res.c << std::endl;
     }
 
     return 0;
