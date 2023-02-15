@@ -17,3 +17,11 @@ services:
       - ./cxx-src/zmq-test/:/workspace
     stdin_open: true
     tty: true
+
+  ipc-container:
+    build: .
+    container_name: ipc-container
+    volumes:
+      - .:/workspace
+    stdin_open: true
+    tty: true

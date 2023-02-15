@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(zmq-test)
+if (POLICY CMP0048)
+  cmake_policy(SET CMP0048 NEW)
+endif (POLICY CMP0048)
+
+project(zmq-test VERSION "0.1.0" LANGUAGES C CXX)
+
 set(app_name zmq-test)
+
+configure_file(config/version.h.in  src/version.h)
 
 ### C++
 enable_language(CXX)
@@ -14,7 +21,8 @@ set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -W -Wall -Wextra")
 message("App name: " ${app_name})
 
 add_executable (${app_name}
-main.cpp)
+src/main.cpp
+src/filemanager.cpp)
 
 
 # Libraries find
@@ -23,3 +31,4 @@ find_library(ZMQ_LIBRARY NAMES zmq)
 
 # Libraries link
 target_link_libraries(${app_name} PRIVATE ${ZMQ_LIBRARY})
+target_include_directories(${app_name} PUBLIC ${PROJECT_BINARY_DIR}/src)
