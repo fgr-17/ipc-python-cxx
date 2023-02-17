@@ -1,14 +1,15 @@
 #!/opt/venv/bin/python
 
+#
+#   Hello World server in Python
+#   Binds REP socket to tcp://*:5555
+#   Expects b"Hello" from client, replies with b"World"
+#
+
 import time
 import zmq
 
-if __name__ == '__main__':
-    print("IPC Python C++ test: python side")
-
-
-
-context = zmq.Context(1)
+context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
 

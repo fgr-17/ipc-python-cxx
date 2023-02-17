@@ -1,9 +1,26 @@
 version: "3.3"
 
 services:
-  ipc-py-cxx:
-    build: ./
-    container_name: ipc-py-cxx
+
+  py-container:
+    build: ./python-src
+    container_name: py-container
+    volumes:
+      - ./python-src:/workspace
+    stdin_open: true
+    tty: true
+
+  zmq-container:
+    build: ./cxx-src/zmq-test
+    container_name: zmq-container
+    volumes:
+      - ./cxx-src/zmq-test/:/workspace
+    stdin_open: true
+    tty: true
+
+  ipc-container:
+    build: .
+    container_name: ipc-container
     volumes:
       - .:/workspace
     stdin_open: true
